@@ -22,7 +22,7 @@ public class Test8 {
 
     Scanner in = new Scanner(System.in);
         try {
-        
+         
             Scanner sc = new Scanner(new File("/home/safyia/Test5/src/test5/QuranWithoutVowels.txt"));
             List<String> lines = new ArrayList<String>();
             while (sc.hasNextLine()) {
