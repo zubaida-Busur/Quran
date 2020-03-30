@@ -4,7 +4,7 @@ public class Test8 {
 
         QuranData myQuran = new QuranData();
 
-        int finding = 330700;
+        int finding = 30709;
         System.out.printf("Character %S: Verse Index in quran :" + myQuran.getVerseForCharacterNo(finding) + "\nVerse No: "
                 + myQuran.getVerseInChapter(myQuran.getVerseForCharacterNo(finding)) + " of Surah: "
                 + myQuran.getSurahName(myQuran.getVerseForCharacterNo(finding)), finding);

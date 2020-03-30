@@ -85,7 +85,7 @@ public class QuranData {
 
                      if(i == 0)
                      {
-                         //
+
                      }
                      else
                          {
@@ -95,7 +95,7 @@ public class QuranData {
                      //if the verses versesUptoSurah grow bigger than your verseNo ... then you've reached the target
                   if(verseIndexInQuran <= versesBefore)
                   {
-                     verseNo = verseIndexInQuran - versesJustBefore + 1;
+                     verseNo = verseIndexInQuran - versesJustBefore ;
                     break;
                  }
              }
@@ -105,6 +105,8 @@ public class QuranData {
     
        public String getSurahName(int verseIndexInQuran)
        {
+           if (verseIndexInQuran == 0) return "No Surah";
+
              int indexedChapterID = 0;
 
              String chapterName="";
@@ -116,7 +118,7 @@ public class QuranData {
                      versesBefore += numOfVerseInEverySurah[i];
                      if(i == 0)
                      {
-                       // do nothing
+                       //do nothing
                      }
                      else
                          {
@@ -130,7 +132,8 @@ public class QuranData {
                  }
              }
 
-             indexedChapterID = chapterNumber + 1;
+             indexedChapterID = chapterNumber + 1 ;
+
 
              if(indexedChapterID == 1)
              {
