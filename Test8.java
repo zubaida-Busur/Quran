@@ -1,15 +1,15 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-
 public class Test8 {
 
     public static void main(String[] args) {
 
-        Test obj = new Test();
+        QuranData myQuran = new QuranData();
+
+        int finding = 330700;
+        System.out.printf("Character %S: Verse Index in quran :" + myQuran.getVerseForCharacterNo(finding) + "\nVerse No: "
+                + myQuran.getVerseInChapter(myQuran.getVerseForCharacterNo(finding)) + " of Surah: "
+                + myQuran.getSurahName(myQuran.getVerseForCharacterNo(finding)), finding);
+
+
 
     }
 
