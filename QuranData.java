@@ -43,6 +43,23 @@ public class QuranData {
                         allVersesWithoutSpacing[i]=charsOfCurrentVerse;
                     }
 
+            //index of start verse
+                int sum_index=0;
+                
+                int[] arr_start=new int[6236];
+               String[] char_start=new String[6236];
+                for(int i=0;i<allVersesWithoutSpacing.length;i++){
+                 
+                    char_start[i] =Character.toString(allVersesWithoutSpacing[i].charAt(0));
+                    arr_start[i]=sum_index;
+                    sum_index+=allVersesWithoutSpacing[i].length();
+                 
+                   }
+        
+              System.out.println("arr_start "+arr_start[0]+ "  "+arr_start[1]);
+              //end
+            
+            
             } catch (Exception ex) {
             }
 
