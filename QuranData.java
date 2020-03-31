@@ -106,9 +106,7 @@ public class QuranData {
     
        public String getSurahName(int verseIndexInQuran)
        {
-           if (verseIndexInQuran == 0) return "No Surah";
-
-             String chapterName="";
+               if (verseIndexInQuran == 0) return "No Surah";
 
              int versesBefore = 0, chapterNumber = 0, versesJustBefore = 0;
 
