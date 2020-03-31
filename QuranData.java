@@ -131,7 +131,7 @@ public class QuranData {
                  }
              }
 
-             return String.valueOf(Surahs.values()[chapterNumber]);
+             return (chapterNumber == 2) ? "آل عمران" : String.valueOf(Surahs.values()[chapterNumber]);
        }
     
 }
