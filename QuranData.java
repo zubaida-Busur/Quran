@@ -108,19 +108,11 @@ public class QuranData {
        {
                if (verseIndexInQuran == 0) return "No Surah";
 
-             int versesBefore = 0, chapterNumber = 0, versesJustBefore = 0;
+             int versesBefore = 0, chapterNumber = 0;
 
              for(int i = 0; i <= numOfVerseInEverySurah.length; i++) //spans 114 chapters
              {
-                     versesBefore += numOfVerseInEverySurah[i];
-                     if(i == 0)
-                     {
-                       //do nothing
-                     }
-                     else
-                         {
-                             versesJustBefore += numOfVerseInEverySurah[(i-1)];
-                         }
+                 versesBefore += numOfVerseInEverySurah[i];
 
                   if(verseIndexInQuran <= versesBefore)
                  {
