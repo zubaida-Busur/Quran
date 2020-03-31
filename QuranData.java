@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 public class QuranData {
 
-    public static int[] numOfVerseInEverySurah=new int[]{7,286,200,176,120,165,206,75,129,109,123,111,43,52,99,128,111,110,98,135,112,78,118,64,77,227,93,88,69,60,34,30,73,54,45,83,182,88,75,85, 54,53,89,59,37,35,38,29,18,45,60,49,62,55,78,96,29,22,24,13,14,11,11,18,12,12,30,52,52,44,28,28,20,56,40,31,50,40,46,42,29,19,36,25,22,17,19,26,30,20,15,21,11,8,8,19,5,8,8,11,11,8,3,9,5,4,7,3,6,3,5,4,5,6};
+    private static int[] numOfVerseInEverySurah=new int[]{7,286,200,176,120,165,206,75,129,109,123,111,43,52,99,128,111,110,98,135,112,78,118,64,77,227,93,88,69,60,34,30,73,54,45,83,182,88,75,85, 54,53,89,59,37,35,38,29,18,45,60,49,62,55,78,96,29,22,24,13,14,11,11,18,12,12,30,52,52,44,28,28,20,56,40,31,50,40,46,42,29,19,36,25,22,17,19,26,30,20,15,21,11,8,8,19,5,8,8,11,11,8,3,9,5,4,7,3,6,3,5,4,5,6};
     public static String[] allVersesWithoutSpacing, allVersesWithSpaces;
-    public static String charsOfCurrentVerse="";
+    public static String charsOfCurrentVerse = "";
     private enum  Surahs{ الفاتحة, البقرة,عمران , النساء, المائد, الأنعام, الأعراف, الأنفال , التوبة, يونس, هود, يوسف, الرعد , إبراهيم, الحجر, النحل , الإسراء, الكهف, مريم, طه, الأنبياء, الحج, المؤمنون, النور, الفرقان,الشعراء,النمل,القصص,العنكبوت,الروم ,لقمان,السجدة,الأحزاب,سبأ,فاطر,يس,الصافات,ص,الزمر,غافر ,فصلت,الشورى,الزخرف,الدخان,الجاثية,الأحقاف,محمد,الفتح,الحجرات,ق,الذاريات,الطور,النجم,القمر,الرحمن,الواقعة,الحديد,المجادلة,الحشر,الممتحنة,الصف,الجمعة,المنافقون,التغابن,الطلاق,التحريم,الملك,القلم,الحاقة,المعارج,نوح ,الجن,المزمل,المدثر,القيامة,الإنسان,المرسلات,النبأ,النازعات,عبس,التكوير,الإنفطار,المطففين,الإنشقاق,البروج,الطارق,الأعلى,الغاشية,الفجر,البلد,الشمس,الليل,الضحى,الشرح,التين,العلق,القدر,البينة,الزلزلة,العاديات,القارعة,التكاثر,العصر,الهمزة,الفيل,قريش,الماعون,الكوثر ,الكافرون,النصر,المسد,الإخلاص,الفلق,الناس}
 
     public QuranData(){
@@ -43,6 +43,11 @@ public class QuranData {
                         allVersesWithoutSpacing[i]=charsOfCurrentVerse;
                     }
 
+        
+            //  System.out.println(" Arr_start "+arr_start[0]+ "  "+arr_start[1]);
+              //end
+            
+            
             } catch (Exception ex) {
             }
 
@@ -68,7 +73,7 @@ public class QuranData {
                                     characterLenghtofCurrentVerse = 0;
                                     for(int x = 0; x <= (allVersesWithoutSpacing[i].length())-1; x++)
                                     {
-                                    characterLenghtofCurrentVerse = characterLenghtofCurrentVerse + 1;
+                                         characterLenghtofCurrentVerse = characterLenghtofCurrentVerse + 1;
                                     }
                                 totalCharactersBeforeVerse = totalCharactersBeforeVerse + characterLenghtofCurrentVerse;
                                 }
@@ -104,24 +109,93 @@ public class QuranData {
             return verseNo;
         }
     
-       public String getSurahName(int verseIndexInQuran)
-       {
-               if (verseIndexInQuran == 0) return "No Surah";
+           public String getSurahName(int verseIndexInQuran)
+           {
+                 if (verseIndexInQuran == 0) return "No Surah";
 
-             int versesBefore = 0, chapterNumber = 0;
+                 int versesBefore = 0, chapterNumber = 0;
 
-             for(int i = 0; i <= numOfVerseInEverySurah.length; i++) //spans 114 chapters
-             {
-                 versesBefore += numOfVerseInEverySurah[i];
-
-                  if(verseIndexInQuran <= versesBefore)
+                 for(int i = 0; i <= numOfVerseInEverySurah.length; i++) //spans 114 chapters
                  {
-                    chapterNumber = i;
-                    break;
-                 }
-             }
+                     versesBefore += numOfVerseInEverySurah[i];
 
-             return (chapterNumber == 2) ? "آل عمران" : String.valueOf(Surahs.values()[chapterNumber]);
-       }
+                      if(verseIndexInQuran <= versesBefore)
+                     {
+                        chapterNumber = i;
+                        break;
+                     }
+                 }
+
+                 return (chapterNumber == 2) ? "آل عمران" : String.valueOf(Surahs.values()[chapterNumber]);
+           }
+
+           public int[] getDivisionHeaderByVerse(int divisionType,  boolean fromFatiha)
+           {
+               int currentIndexOfVerse = 0;
+               int currentDivision = 0;
+               int divisions = 604 / divisionType;
+               int step = 330709 / divisions;
+
+               if (fromFatiha)
+               {
+
+                   while  (currentDivision < divisions)
+                   {
+                       currentDivision++;
+                       currentIndexOfVerse = getVerseForCharacterNo(step);
+                   }
+
+               }
+               return null;
+           }
+
+           //returns a 0-indexed array This function should be private after testing
+           public int[] getCharacterIndexOfVerseHeaders()
+           {
+               int sum_index = 0;
+
+               int[] arr_start = new int[6236];
+
+               for(int i = 0 ; i < allVersesWithoutSpacing.length; i++)
+               {
+                   arr_start[i] = sum_index;
+                   sum_index += allVersesWithoutSpacing[i].length();
+               }
+               return arr_start;
+           }
+
+            //returns a 0-indexed array af the Lenght of the verses: should be private too!
+           public int[] getCharacterLenghtOfAllVerses()
+           {
+               int  lenght = 0;
+               int [] arrayOfVerseLenghts = new int[6236];
+               int myArr[] = getCharacterIndexOfVerseHeaders();
+
+               for (int i = 0; i < myArr.length ; i++)
+               {
+                   lenght = 0;
+                   if (i == myArr.length -1) break;
+                   lenght = myArr[i + 1] - myArr[ i ];
+                   arrayOfVerseLenghts[i] = lenght;
+               }
+               //set last Verse Manually
+               arrayOfVerseLenghts[6235] = 13;
+
+               return arrayOfVerseLenghts;
+           }
+
+           public int getCharacterIndexForVerse(int verseNo)
+           {
+               verseNo -= 1;
+               int[] characterIndexForVerseHeaders = getCharacterIndexOfVerseHeaders();
+               return characterIndexForVerseHeaders[verseNo] + 1;
+           }
+
+           public int getVerseLenght(int verseNo)
+           {
+               verseNo -= 1;
+               int [] verseLenghts = getCharacterLenghtOfAllVerses();
+               return verseLenghts[verseNo];
+           }
     
 }
