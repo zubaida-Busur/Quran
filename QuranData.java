@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class QuranData {
 
     public static int[] numOfVerseInEverySurah=new int[]{7,286,200,176,120,165,206,75,129,109,123,111,43,52,99,128,111,110,98,135,112,78,118,64,77,227,93,88,69,60,34,30,73,54,45,83,182,88,75,85, 54,53,89,59,37,35,38,29,18,45,60,49,62,55,78,96,29,22,24,13,14,11,11,18,12,12,30,52,52,44,28,28,20,56,40,31,50,40,46,42,29,19,36,25,22,17,19,26,30,20,15,21,11,8,8,19,5,8,8,11,11,8,3,9,5,4,7,3,6,3,5,4,5,6};
-    public static String[] allVersesWithoutSpacing, allVersesWithSpaces;
+    public static String[] allVersesWithoutSpacing, allVersesWithSpaces,allVersesWithoutSpacing_reversed;
     public static String charsOfCurrentVerse="";
     private enum  Surahs{ الفاتحة, البقرة,عمران , النساء, المائد, الأنعام, الأعراف, الأنفال , التوبة, يونس, هود, يوسف, الرعد , إبراهيم, الحجر, النحل , الإسراء, الكهف, مريم, طه, الأنبياء, الحج, المؤمنون, النور, الفرقان,الشعراء,النمل,القصص,العنكبوت,الروم ,لقمان,السجدة,الأحزاب,سبأ,فاطر,يس,الصافات,ص,الزمر,غافر ,فصلت,الشورى,الزخرف,الدخان,الجاثية,الأحقاف,محمد,الفتح,الحجرات,ق,الذاريات,الطور,النجم,القمر,الرحمن,الواقعة,الحديد,المجادلة,الحشر,الممتحنة,الصف,الجمعة,المنافقون,التغابن,الطلاق,التحريم,الملك,القلم,الحاقة,المعارج,نوح ,الجن,المزمل,المدثر,القيامة,الإنسان,المرسلات,النبأ,النازعات,عبس,التكوير,الإنفطار,المطففين,الإنشقاق,البروج,الطارق,الأعلى,الغاشية,الفجر,البلد,الشمس,الليل,الضحى,الشرح,التين,العلق,القدر,البينة,الزلزلة,العاديات,القارعة,التكاثر,العصر,الهمزة,الفيل,قريش,الماعون,الكوثر ,الكافرون,النصر,المسد,الإخلاص,الفلق,الناس}
 
@@ -60,6 +60,70 @@ public class QuranData {
               //end
             
             
+
+// all Verses Without Spacing reversed
+                           
+//start ---
+
+ int[] arr_index=new int[6326];
+    int sum_indexs=0;
+    for(int x=0;x<numOfVerseInEverySurah.length;x++){
+        sum_indexs+=numOfVerseInEverySurah[x];
+      
+       arr_index[x]=sum_indexs;
+    }
+    
+    //////
+      
+int[] arr_m=new int[114];
+int verse=113;
+for(int a=0;a<114;a++){
+    arr_m[a]=arr_index[verse];
+    verse--;      
+}    
+       
+        System.out.println(" ");
+    int w=0,m=0;
+   
+List arr_qur=new ArrayList();     
+   for(int q=0;q<114;q++){
+       if(q>1){
+            w=arr_m[(q-1)]-arr_m[q];
+          m=arr_m[q];
+        for(int x=0;x<w;x++){
+            arr_qur.add(allVersesWithoutSpacing[m]);
+            m++;
+        }//x
+       }//if-z
+          
+       if(q==0){
+          w=6236-6230;
+          m=6230;
+        for(int x=0;x<6;x++){
+            arr_qur.add(allVersesWithoutSpacing[m]);
+m++;
+        }//x
+       }
+       
+       if(q==113){
+          m=0;
+        for(int x=0;x<7;x++){
+            arr_qur.add(allVersesWithoutSpacing[m]);
+m++;
+        }//x
+       }
+       
+    }//q
+    
+   allVersesWithoutSpacing_reversed=new String[6326];
+        for(int y=0;y<6236;y++){
+            allVersesWithoutSpacing_reversed[y]=(String) arr_qur.get(y);
+           
+        }
+        
+//end
+
+
             } catch (Exception ex) {
             }
 
