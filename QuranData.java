@@ -44,7 +44,7 @@ public class QuranData {
                     }
 
         
-            //  System.out.println(" Arr_start "+arr_start[0]+ "  "+arr_start[1]);
+                //System.out.println(" Arr_start "+arr_start[0]+ "  "+arr_start[1]);
               //end
             
             
@@ -129,24 +129,43 @@ public class QuranData {
                  return (chapterNumber == 2) ? "آل عمران" : String.valueOf(Surahs.values()[chapterNumber]);
            }
 
-           public int[] getDivisionHeaderByVerse(int divisionType,  boolean fromFatiha)
+           public int[] getDivisionHeaderByVerse(double divisionType , int beginningVerse , int endVerse)
            {
-               int currentIndexOfVerse = 0;
-               int currentDivision = 0;
-               int divisions = 604 / divisionType;
-               int step = 330709 / divisions;
+               int onCharacter = getCharacterIndexForVerse(beginningVerse);
+               int currentIndexOfVerse = beginningVerse;
+               double div =  (600.0 /  divisionType);
+               int step =   ( (int) (330709/div));
+               int verseHolder = 0;
+               ArrayList<Integer> myList = new ArrayList<Integer>();
+               myList.add(0, beginningVerse);
 
-               if (fromFatiha)
+
+               while ((getCharacterIndexForVerse(currentIndexOfVerse) < getCharacterIndexForVerse(endVerse)))
                {
+                        onCharacter += step;
+                        verseHolder = getVerseForCharacterNo(onCharacter);
 
-                   while  (currentDivision < divisions)
-                   {
-                       currentDivision++;
-                       currentIndexOfVerse = getVerseForCharacterNo(step);
-                   }
+                        if ((getVerseLenght(verseHolder) / 2) <= ( onCharacter - getCharacterIndexForVerse(verseHolder)))
+                        {
+                            onCharacter = getCharacterIndexForVerse(verseHolder);
+                            myList.add(verseHolder);
+                            currentIndexOfVerse = verseHolder;
 
+                        }
+                        else
+                        {
+                            onCharacter = getCharacterIndexForVerse(verseHolder + 1);
+                            myList.add((verseHolder + 1));
+                            currentIndexOfVerse = verseHolder + 1;
+                        }
                }
-               return null;
+               int divisions[] = new int[myList.size()];
+               for (int i = 0; i < myList.size() ; i++)
+               {
+                  divisions[i] =  myList.get(i);
+               }
+
+               return divisions;
            }
 
            //returns a 0-indexed array This function should be private after testing

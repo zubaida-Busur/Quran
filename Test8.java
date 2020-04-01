@@ -11,6 +11,8 @@ public class Test8 {
 
         System.out.println();
 
+
+        //trial for func
         int arr[] = myQuran.getCharacterIndexOfVerseHeaders();
         int lenghts[] = myQuran.getCharacterLenghtOfAllVerses();
 
@@ -27,6 +29,14 @@ public class Test8 {
         System.out.println("Verse 6236: " + myQuran.getVerseLenght(6236) + " : "+ myQuran.getCharacterIndexForVerse(6236));
 
 
-    }
+        //trial for func
+        int divisions[] = myQuran.getDivisionHeaderByVerse( 0.5,653,700);
+
+        for (int r: divisions)
+        {
+            System.out.println( myQuran.getSurahName(r) + " : " +   myQuran.getVerseInChapter(r));
+        }
+
+  }
 
 }
