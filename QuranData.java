@@ -65,15 +65,20 @@ public class QuranData {
                            
 //start ---
 
- int[] arr_index=new int[6326];
+
+ int[] arr_index=new int[114];
     int sum_indexs=0;
     for(int x=0;x<numOfVerseInEverySurah.length;x++){
+       if(x==0){
+          arr_index[x]=0;
+      sum_indexs=numOfVerseInEverySurah[0];}
+       else
+       {
+         arr_index[x]=sum_indexs;
         sum_indexs+=numOfVerseInEverySurah[x];
-      
-       arr_index[x]=sum_indexs;
     }
-    
-    //////
+    }
+        
       
 int[] arr_m=new int[114];
 int verse=113;
@@ -87,9 +92,11 @@ for(int a=0;a<114;a++){
    
 List arr_qur=new ArrayList();     
    for(int q=0;q<114;q++){
-       if(q>1){
+       if(q>=1){
             w=arr_m[(q-1)]-arr_m[q];
+          
           m=arr_m[q];
+          
         for(int x=0;x<w;x++){
             arr_qur.add(allVersesWithoutSpacing[m]);
             m++;
@@ -104,25 +111,19 @@ List arr_qur=new ArrayList();
 m++;
         }//x
        }
-       
-       if(q==113){
-          m=0;
-        for(int x=0;x<7;x++){
-            arr_qur.add(allVersesWithoutSpacing[m]);
-m++;
-        }//x
-       }
-       
+  
     }//q
     
-   allVersesWithoutSpacing_reversed=new String[6326];
+   for(int v=0;v<6236;v++){
+            System.out.println("---- "+arr_qur.get(v));
+   }
+            
+            allVersesWithoutSpacing_reversed=new String[6326];
         for(int y=0;y<6236;y++){
             allVersesWithoutSpacing_reversed[y]=(String) arr_qur.get(y);
            
         }
-        
-//end
-
+  //end
 
             } catch (Exception ex) {
             }
