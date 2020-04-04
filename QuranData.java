@@ -167,6 +167,8 @@ public class QuranData {
                             currentIndexOfVerse = verseHolder + 1;
                         }
                }
+
+               //decided to use a for loop to avoid casting to Objects
                int divisions[] = new int[myList.size()];
                for (int i = 0; i < myList.size() ; i++)
                {
