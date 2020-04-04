@@ -205,5 +205,29 @@ m++;
 
              return (chapterNumber == 2) ? "آل عمران" : String.valueOf(Surahs.values()[chapterNumber]);
        }
+    //
+     public int mapReversedVerseIndexToNormal(int reverseVerseIndex)
+            {
+                int normalIndex = 0;
+
+           for(int i=0;i<allVersesWithoutSpacing.length;i++){
+               normalIndex=6236-reverseVerseIndex;
+           }
+                //where is verse reversedIndexVerse in array allVersesWithoutSpacing?
+                return normalIndex;
+
+            }
+    
+      public int mapNormalVerseIndexToReversed (int normalVerseIndex)
+            {
+                int reversedIndex = 0;
+
+                //where is verse normalVerseIndex in array allVersesWithoutSpacingReversed?
+for(int i=0;i<allVersesWithoutSpacing_reversed.length;i++){
+               reversedIndex=6236-normalVerseIndex;
+           }
+                return reversedIndex;
+            }
+
     
 }
