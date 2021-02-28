@@ -13,7 +13,7 @@ public class QuranData {
     public static String charsOfCurrentVerse = "";
     private enum  Surahs{ الفاتحة, البقرة,عمران , النساء, المائد, الأنعام, الأعراف, الأنفال , التوبة, يونس, هود, يوسف, الرعد , إبراهيم, الحجر, النحل , الإسراء, الكهف, مريم, طه, الأنبياء, الحج, المؤمنون, النور, الفرقان,الشعراء,النمل,القصص,العنكبوت,الروم ,لقمان,السجدة,الأحزاب,سبأ,فاطر,يس,الصافات,ص,الزمر,غافر ,فصلت,الشورى,الزخرف,الدخان,الجاثية,الأحقاف,محمد,الفتح,الحجرات,ق,الذاريات,الطور,النجم,القمر,الرحمن,الواقعة,الحديد,المجادلة,الحشر,الممتحنة,الصف,الجمعة,المنافقون,التغابن,الطلاق,التحريم,الملك,القلم,الحاقة,المعارج,نوح ,الجن,المزمل,المدثر,القيامة,الإنسان,المرسلات,النبأ,النازعات,عبس,التكوير,الإنفطار,المطففين,الإنشقاق,البروج,الطارق,الأعلى,الغاشية,الفجر,البلد,الشمس,الليل,الضحى,الشرح,التين,العلق,القدر,البينة,الزلزلة,العاديات,القارعة,التكاثر,العصر,الهمزة,الفيل,قريش,الماعون,الكوثر ,الكافرون,النصر,المسد,الإخلاص,الفلق,الناس}
 
-            public QuranData()
+        public QuranData()
             {
                  Scanner in = new Scanner(System.in);
             try {
@@ -65,8 +65,8 @@ public class QuranData {
                     }
             }
     
-             public int getVerseForCharacterNo(int indexOfCharacter)
-             {
+        public int getVerseForCharacterNo(int indexOfCharacter)
+         {
 
                        int characterPosition = 0, totalCharactersBeforeVerse = 0, characterLenghtofCurrentVerse = 0;
 
@@ -89,8 +89,8 @@ public class QuranData {
                      return characterPosition;
             }
 
-            public int  getVerseInChapter(int verseIndexInQuran)
-            {
+        public int  getVerseInChapter(int verseIndexInQuran)
+         {
                  int versesBefore = 0, verseNo = 0, versesJustBefore = 0;
 
                  for(int i = 0 ; i <= numOfVerseInEverySurah.length; i++)
@@ -116,9 +116,9 @@ public class QuranData {
 
                 return verseNo;
             }
-    
-           public String getSurahName(int verseIndexInQuran)
-           {
+
+        public String getSurahName(int verseIndexInQuran)
+         {
                  if (verseIndexInQuran == 0) return "No Surah";
 
                  int versesBefore = 0, chapterNumber = 0;
@@ -137,8 +137,8 @@ public class QuranData {
                  return (chapterNumber == 2) ? "آل عمران" : String.valueOf(Surahs.values()[chapterNumber]);
            }
 
-           public int[] getDivisionHeaderByVerse(double divisionType , int beginningVerse , int endVerse)
-           {
+        public int[] getDivisionHeaderByVerse(double divisionType , int beginningVerse , int endVerse)
+         {
                int onCharacter = getCharacterIndexForVerse(beginningVerse);
                int currentIndexOfVerse = beginningVerse;
                double div =  (600.0 /  divisionType);
@@ -168,7 +168,7 @@ public class QuranData {
                         }
                }
 
-               //decided to use a for loop to avoid casting to Objects
+
                int divisions[] = new int[myList.size()];
                for (int i = 0; i < myList.size() ; i++)
                {
@@ -179,8 +179,8 @@ public class QuranData {
            }
 
            //returns a 0-indexed array This function should be private after testing
-           public int[] getCharacterIndexOfVerseHeaders()
-           {
+        public int[] getCharacterIndexOfVerseHeaders()
+        {
                int sum_index = 0;
 
                int[] arr_start = new int[6236];
@@ -194,7 +194,7 @@ public class QuranData {
            }
 
             //returns a 0-indexed array af the Lenght of the verses: should be private too!
-           public int[] getCharacterLenghtOfAllVerses()
+        public int[] getCharacterLenghtOfAllVerses()
            {
                int  lenght = 0;
                int [] arrayOfVerseLenghts = new int[6236];
@@ -213,21 +213,21 @@ public class QuranData {
                return arrayOfVerseLenghts;
            }
 
-           public int getCharacterIndexForVerse(int verseNo)
+        public int getCharacterIndexForVerse(int verseNo)
            {
                verseNo -= 1;
                int[] characterIndexForVerseHeaders = getCharacterIndexOfVerseHeaders();
                return characterIndexForVerseHeaders[verseNo] + 1;
            }
 
-           public int getVerseLenght(int verseNo)
+        public int getVerseLenght(int verseNo)
            {
                verseNo -= 1;
                int [] verseLenghts = getCharacterLenghtOfAllVerses();
                return verseLenghts[verseNo];
            }
 
-            public int mapReversedVerseIndexToNormal(int reverseVerseIndex)
+        public int mapReversedVerseIndexToNormal(int reverseVerseIndex)
             {
                 int normalIndex = 0;
 
@@ -236,7 +236,7 @@ public class QuranData {
 
             }
 
-            public int mapNormalVerseIndexToReversed (int normalVerseIndex)
+        public int mapNormalVerseIndexToReversed (int normalVerseIndex)
             {
                 int reversedIndex = 0;
 
@@ -244,7 +244,7 @@ public class QuranData {
                 return reversedIndex;
             }
 
-           public String[] allVersesWithoutSpacingReversed()
+        public String[] allVersesWithoutSpacingReversed()
            {
                int w = 0, m = 0;
                ArrayList<String> reversedAllVersesWithoutSpacing = new ArrayList();
