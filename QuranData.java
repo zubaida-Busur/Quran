@@ -279,6 +279,7 @@ public class QuranData {
                String[] allversesWithoutSpacingReversed = (String[]) reversedAllVersesWithoutSpacing.toArray();
 
                return allversesWithoutSpacingReversed;
+               System.out.println("test");
            }
 
 
